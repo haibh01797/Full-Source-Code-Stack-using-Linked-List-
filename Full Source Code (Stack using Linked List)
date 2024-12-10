@@ -1,0 +1,57 @@
+class StackLinkedList {
+    private class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    private Node top;
+
+    public StackLinkedList() {
+        top = null;
+    }
+
+    public void push(int element) {
+        Node newNode = new Node(element);
+        newNode.next = top;
+        top = newNode;
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot pop.");
+            return -1;
+        }
+        int popped = top.data;
+        top = top.next;
+        return popped;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. No top element.");
+            return -1;
+        }
+        return top.data;
+    }
+
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    public static void main(String[] args) {
+        StackLinkedList stack = new StackLinkedList();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        System.out.println("Top element: " + stack.peek());
+        System.out.println("Popped element: " + stack.pop());
+        System.out.println("Is stack empty? " + stack.isEmpty());
+    }
+}
